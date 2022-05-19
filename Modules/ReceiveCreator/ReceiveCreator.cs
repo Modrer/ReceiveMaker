@@ -119,7 +119,8 @@ namespace ReceiveMaker.Modules.ReceiveCreator
                 }
                 FillFields(model.Fields, document);
 
-                Directory.CreateDirectory("templates");
+                var d = Directory.CreateDirectory("templates");
+                var t = d.FullName;
                 MemoryStream memoryStream = new MemoryStream();
                 document.SaveAs(memoryStream);
                 memoryStream.Position = 0;
@@ -129,21 +130,22 @@ namespace ReceiveMaker.Modules.ReceiveCreator
         }
         public static string saveTemplate(IFormFile file, string templateName)
         {
-            string saveLocation = Directory.GetCurrentDirectory()+ "templates/" + templateName + ".docx";
-            using (var fstream = new FileInfo(file.FileName).Create())
+            string saveLocation = Directory.GetCurrentDirectory() + "\\templates\\" + templateName + ".docx";
+            using (var fstream = new FileInfo(saveLocation).Create())
             {
                 file.CopyTo(fstream);
 
                 return saveLocation;
             }
-            return null;
+            throw new Exception("No save");
         }
         public static string saveTemplate(FileStream file, string templateName)
         {
-            string saveLocation = Directory.GetCurrentDirectory() + "templates/" + templateName + ".docx";
+            string saveLocation = Directory.GetCurrentDirectory() + "\\templates\\" + templateName + ".docx";           
             using (var fstream = new FileInfo(saveLocation).Create())
             {
                 file.CopyTo(fstream);
+  
 
                 return saveLocation;
             }

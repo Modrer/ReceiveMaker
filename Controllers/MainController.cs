@@ -123,7 +123,7 @@ namespace ReceiveMaker.Controllers
 
             MemoryStream memoryStream = ReceiveCreator.MakeReceive(model);
 
-            return File(memoryStream, "application/msword");
+            return File(memoryStream, "application/msdocx");
 
             
         }

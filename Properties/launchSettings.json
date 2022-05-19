@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "KyrsovaWebApiNET5": {
+    "ReceiveMaker": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
